@@ -1,0 +1,65 @@
+/* Reset e estilos base */
+html, body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background: #FFFFFF;
+    font-family: Arial, sans-serif;
+}
+
+/* Layout do header */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 1%;
+    background: transparent;
+    border-bottom: 1px solid #eee;
+
+}
+
+.logo {
+    width: 200px;
+    height: auto;
+}
+
+/* Estilização do menu */
+nav {
+    display: flex;
+    gap: 20px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+    padding: 5px 10px;
+    transition: color 0.3s ease;
+}
+
+nav a:hover {
+    color: #0066cc;
+}
+
+/* Conteúdo principal */
+main {
+    padding: 20px 5%;
+}
+
+section {
+    margin-bottom: 30px;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 20px;
+    background: #f4f4f4;
+    margin-top: 40px;
+}
+#icon{
+    border-radius: 50%;
+}
+.logo{
+    width: 100px%;
+}
