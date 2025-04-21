@@ -12,7 +12,7 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 5px 1%;
+    padding: 20px 20px 20px 20px;
     background: transparent;
     border-bottom: 1px solid #eee;
 
@@ -61,14 +61,59 @@ footer {
     border-radius: 50%;
 }
 .logo{
-    width: 100px%;
+    width: 200px;
 }
-.a{
-    display: flex;
+/* Estilo base dos itens de navegação */
+/* Estilo base dos itens */
+.nav-item {
+    display: inline-flex;
     align-items: center;
     align-content: center;
-    width: 50px;
-    height: 50px;
-    background-color: #333;
-    border-radius: 50%;
+    margin: 0 0px;
+    cursor: pointer;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    border-radius: 50px;
+    background: #f0f0f0;
+    height: 40px;
+    width: 40px; /* Estado recolhido */
 }
+
+/* Ícone circular */
+.icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 40px; /* Largura fixa */
+    height: 40px;
+    border-radius: 50%;
+    background: #2f7260;
+    color: white;
+    font-weight: bold;
+}
+
+/* Texto (inicialmente oculto) */
+.nav-item a {
+    opacity: 0;
+    width: 0;
+    padding: 0;
+    white-space: nowrap;
+    transition: all 0.3s ease;
+    color: #333;
+    text-decoration: none;
+    margin-left: 10px;
+}
+
+/* Efeito hover */
+.nav-item:hover {
+    width: auto; /* Expande para o conteúdo */
+    background: #e0e0e0;
+    padding-right: 15px;
+}
+
+.nav-item:hover a {
+    opacity: 1;
+    width: auto;
+    padding: 5px 10px;
+}
+
