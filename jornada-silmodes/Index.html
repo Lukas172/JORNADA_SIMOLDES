@@ -9,25 +9,32 @@
 </head>
 <body>
     <header>
-        <img src="IMG/logo.png" alt="Logo Simoldes" class="logo">
+        <a href="Index.html">
+            <img src="IMG/logo.png" alt="Logo Simoldes" class="logo">
+        </a>
         <nav>
-            <div class="nav-item">
+            <div class="nav-item" onclick="showTable('production')">
                 <span class="icon">MP</span>
                 <a href="#">Moldes em Produção</a>
             </div>
-            <div class="nav-item">
+            <div class="nav-item" onclick="showTable('finished')">
                 <span class="icon">MF</span>
                 <a href="#">Moldes Finalizados</a>
             </div>
-            <div class="nav-item">
+            <div class="nav-item" onclick="showTable('stock')">
                 <span class="icon">E</span>
                 <a href="#">Estoque</a>
             </div>
         </nav>
     </header>
 
-    <main>
-        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    <main id="content-area">
+        <!-- Área inicial vazia -->
+        <div id="table-container" class="initial-state">
+            <div class="welcome-message">
+                <h2>Bem-vindo ao Simoldes Tools</h2>
+            </div>
+        </div>
     </main>
 
     <footer>
@@ -35,10 +42,77 @@
     </footer>
 
     <script>
-        
-        // JavaScript pode ser adicionado aqui
-        console.log('Página carregada!');
+        // Dados de exemplo (substitua pelos seus dados reais)
+        const moldData = {
+            production: [
+                { id: "1678", processos: "Corte, Usinagem", status: "Em andamento" },
+                { id: "1679", processos: "Corte, Solda", status: "Aguardando revisão" }
+            ],
+            finished: [
+                { id: "1676", processos: "Completo", status: "Pronto para entrega" },
+                { id: "1677", processos: "Completo", status: "Entregue" }
+            ],
+            stock: [
+                { id: "AÇO-201", codigo: "AC-304", quantidade: "50 unidades" },
+                { id: "AÇO-202", codigo: "AC-416", quantidade: "30 unidades" }
+            ]
+        };
 
+        // Função para mostrar a tabela correta
+        function showTable(tableType) {
+            const container = document.getElementById('table-container');
+            container.classList.remove('initial-state');
+            
+            let html = '';
+            
+            if (tableType === 'production') {
+                html = createTable(moldData.production, 'Moldes em Produção', true);
+            } 
+            else if (tableType === 'finished') {
+                html = createTable(moldData.finished, 'Moldes Finalizados', true);
+            } 
+            else if (tableType === 'stock') {
+                html = createTable(moldData.stock, 'Estoque de Aços', false);
+            }
+            
+            container.innerHTML = html;
+        }
+
+        // Função para criar a tabela HTML
+        function createTable(data, title, showProcessColumn) {
+            let html = `<h2>${title}</h2>
+                       <table class="data-table">
+                           <thead>
+                               <tr>
+                                   <th>Número</th>
+                                   ${showProcessColumn ? '<th>Processos Realizados</th>' : '<th>Código</th>'}
+                                   <th>Status/Quantidade</th>
+                                   <th>Ação</th>
+                               </tr>
+                           </thead>
+                           <tbody>`;
+            
+            data.forEach(item => {
+                html += `<tr>
+                            <td>${item.id}</td>
+                            <td>${showProcessColumn ? item.processos : item.codigo}</td>
+                            <td>${item.status || item.quantidade}</td>
+                            <td><button class="view-btn" onclick="viewItem('${item.id}')">Visualizar</button></td>
+                        </tr>`;
+            });
+            
+            html += `</tbody></table>`;
+            return html;
+        }
+
+        // Função para visualizar um item
+        function viewItem(itemId) {
+            // Redireciona para a página de detalhes com o ID do molde
+            window.location.href = `detalhes-molde.html?id=${itemId}`;
+            
+            // Alternativa se estiver usando pastas:
+            // window.location.href = `pages/detalhes-molde.html?id=${itemId}`;
+        }
     </script>
 </body>
 </html>

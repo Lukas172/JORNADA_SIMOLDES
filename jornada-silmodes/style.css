@@ -3,19 +3,26 @@ html, body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    height: 100%; /* IMPORTANTE */
     background: #FFFFFF;
     font-family: Arial, sans-serif;
 }
 
-/* Layout do header */
+/* Layout principal da página */
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Altura mínima da viewport */
+}
+
+/* Header */
 header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px 20px 20px 20px;
+    padding: 20px;
     background: transparent;
     border-bottom: 1px solid #eee;
-
 }
 
 .logo {
@@ -23,7 +30,7 @@ header {
     height: auto;
 }
 
-/* Estilização do menu */
+/* Navegação */
 nav {
     display: flex;
     gap: 20px;
@@ -41,50 +48,57 @@ nav a:hover {
     color: #0066cc;
 }
 
-/* Conteúdo principal */
+/* Conteúdo principal cresce para empurrar o footer */
 main {
+    flex: 1;
     padding: 20px 5%;
+    width: 100%;
+    box-sizing: border-box;
 }
 
+/* Seções */
 section {
     margin-bottom: 30px;
 }
 
-/* Footer */
+/* Footer colado no fim */
 footer {
     text-align: center;
     padding: 20px;
     background: #f4f4f4;
-    margin-top: 40px;
+    width: 100%;
+    box-sizing: border-box;
 }
-#icon{
+
+/* Ícones */
+#icon {
     border-radius: 50%;
 }
-.logo{
+
+.logo {
     width: 200px;
 }
-/* Estilo base dos itens de navegação */
-/* Estilo base dos itens */
+
+/* Itens do menu com ícones */
 .nav-item {
     display: inline-flex;
     align-items: center;
-    align-content: center;
-    margin: 0 0px;
+    margin: 0;
     cursor: pointer;
     overflow: hidden;
-    transition: all 0.3s ease;
+    transition: max-width 0.4s ease, background 0.3s ease, padding 0.4s ease;
     border-radius: 50px;
     background: #f0f0f0;
     height: 40px;
-    width: 40px; /* Estado recolhido */
+    width: auto;         /* Permite largura flexível */
+    max-width: 40px;     /* Estado recolhido */
 }
 
-/* Ícone circular */
 .icon {
     display: flex;
     justify-content: center;
     align-items: center;
-    min-width: 40px; /* Largura fixa */
+    min-width: 40px;
     height: 40px;
     border-radius: 50%;
     background: #2f7260;
@@ -92,23 +106,21 @@ footer {
     font-weight: bold;
 }
 
-/* Texto (inicialmente oculto) */
 .nav-item a {
     opacity: 0;
     width: 0;
     padding: 0;
     white-space: nowrap;
-    transition: all 0.3s ease;
+    transition: opacity 0.4s ease, width 0.4s ease, padding 0.4s ease;
     color: #333;
     text-decoration: none;
     margin-left: 10px;
 }
 
-/* Efeito hover */
 .nav-item:hover {
-    width: auto; /* Expande para o conteúdo */
+    max-width: 300px;    /* Espaço suficiente para qualquer texto */
     background: #e0e0e0;
-    padding-right: 15px;
+    padding-right: 1px;
 }
 
 .nav-item:hover a {
@@ -117,3 +129,576 @@ footer {
     padding: 5px 10px;
 }
 
+/* Estilos para as tabelas */
+#table-container {
+    width: 100%;
+    margin-top: 20px;
+}
+
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.data-table th, .data-table td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.data-table th {
+    background-color: #2f7260;
+    color: white;
+    font-weight: bold;
+}
+
+.data-table tr:hover {
+    background-color: #f5f5f5;
+}
+
+.view-btn {
+    background-color: #2f7260;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.view-btn:hover {
+    background-color: #245748;
+}
+
+/* Responsividade para tabelas */
+@media (max-width: 768px) {
+    .data-table {
+        display: block;
+        overflow-x: auto;
+    }
+}
+/* Estilo para o estado inicial */
+.initial-state {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60vh;
+    text-align: center;
+}
+
+.welcome-message {
+    max-width: 600px;
+    padding: 30px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.welcome-message h2 {
+    color: #2f7260;
+    margin-bottom: 15px;
+}
+
+.welcome-message p {
+    color: #555;
+    font-size: 1.1em;
+}
+
+/* Estilos para as tabelas (manter os existentes) */
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+/* ... (mantenha todos os outros estilos de tabela existentes) ... */
+
+/* Estilos para a página de detalhes */
+.detail-container {
+    padding: 20px 5%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.breadcrumb {
+    margin-bottom: 20px;
+    color: #666;
+}
+
+.breadcrumb a {
+    color: #2f7260;
+    text-decoration: none;
+}
+
+.molde-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px;
+    gap: 20px;
+}
+
+.detail-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.card {
+    background: white;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+}
+
+.card h2 {
+    color: #2f7260;
+    margin-top: 0;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+}
+
+/* Status Badges */
+.status-badge {
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 0.8em;
+    font-weight: bold;
+    display: inline-block;
+}
+
+.em-producao {
+    background: #fff3cd;
+    color: #856404;
+}
+
+.disponivel {
+    background: #d4edda;
+    color: #155724;
+}
+
+.pendente {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+/* Tabela de Materiais */
+/* Container principal */
+.materiais {
+    overflow-x: auto; /* Permite rolagem horizontal se necessário */
+    padding: 20px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+/* Tabela */
+.materials-table {
+    width: 100%;
+    min-width: 800px; /* Largura mínima para evitar compressão */
+    border-collapse: separate;
+    border-spacing: 0;
+}
+
+/* Cabeçalho */
+.materials-table th {
+    background: #2f7260;
+    color: white;
+    padding: 15px 12px;
+    text-align: left;
+    white-space: nowrap; /* Impede quebra de linha */
+    font-weight: 500;
+}
+
+/* Células */
+.materials-table td {
+    padding: 15px 12px;
+    border-bottom: 1px solid #f0f0f0;
+    vertical-align: middle;
+}
+
+/* Linhas alternadas para melhor legibilidade */
+.materials-table tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+/* Inputs de quantidade */
+.qty-input {
+    width: 70px;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    text-align: center;
+}
+
+/* Checkboxes */
+.checkbox-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Botões de ação */
+.action-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.1em;
+    margin: 0 5px;
+    color: #2f7260;
+}
+
+/* Barra de controles */
+.materials-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+/* Botão de adicionar */
+.add-material-btn {
+    background: #2f7260;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Campo de busca */
+.search-box {
+    display: flex;
+    align-items: center;
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 5px 10px;
+    flex-grow: 1;
+    max-width: 300px;
+}
+
+#steel-search {
+    border: none;
+    outline: none;
+    padding: 8px;
+    width: 100%;
+}
+
+#search-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #666;
+}
+/* Timeline de Etapas */
+.timeline {
+    margin-top: 20px;
+}
+
+.etapa {
+    padding: 15px;
+    margin-bottom: 15px;
+    border-left: 4px solid #ddd;
+    position: relative;
+}
+
+.etapa.completed {
+    border-left-color: #28a745;
+    background: #f8f9fa;
+}
+
+.etapa.in-progress {
+    border-left-color: #ffc107;
+    background: #fff9e6;
+}
+
+.etapa.pending {
+    border-left-color: #6c757d;
+}
+
+.etapa-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.etapa-nome {
+    font-weight: bold;
+}
+
+/* Validações */
+.validation-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    gap: 10px;
+}
+
+.validation-item label {
+    min-width: 100px;
+    font-weight: bold;
+}
+
+.validation-select {
+    padding: 8px;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+}
+
+.validation-notes {
+    flex: 1;
+    padding: 8px;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+}
+
+/* Botões */
+.edit-btn, .view-file-btn, .update-btn, .save-btn, .add-material-btn {
+    padding: 8px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.edit-btn {
+    background: #6c757d;
+    color: white;
+}
+
+.view-file-btn {
+    background: #17a2b8;
+    color: white;
+}
+
+.update-btn {
+    background: #ffc107;
+    color: #212529;
+}
+
+.save-btn {
+    background: #28a745;
+    color: white;
+    padding: 10px 20px;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.add-material-btn {
+    background: #2f7260;
+    color: white;
+    margin-top: 10px;
+    width: 100%;
+}
+
+/* Campos editáveis */
+.editable-field {
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.editable-field label {
+    min-width: 120px;
+    font-weight: bold;
+}
+
+.editable-field .value {
+    flex: 1;
+    padding: 8px;
+    background: #f8f9fa;
+    border-radius: 4px;
+}
+/* Estilos para a seção de aços */
+.materials-controls {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    gap: 15px;
+}
+
+.search-box {
+    display: flex;
+    align-items: center;
+}
+
+#steel-search {
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-right: 5px;
+}
+
+#search-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.2em;
+}
+
+.materials-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.materials-table th {
+    background: #2f7260;
+    color: white;
+    padding: 12px;
+    text-align: left;
+}
+
+.materials-table td {
+    padding: 12px;
+    border-bottom: 1px solid #eee;
+}
+
+.qty-input {
+    width: 70px;
+    padding: 5px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+}
+
+.checkbox-container {
+    display: block;
+    position: relative;
+    padding-left: 30px;
+    cursor: pointer;
+    user-select: none;
+}
+
+.checkbox-container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 20px;
+    width: 20px;
+    background-color: #eee;
+    border-radius: 3px;
+}
+
+.checkbox-container:hover input ~ .checkmark {
+    background-color: #ccc;
+}
+
+.checkbox-container input:checked ~ .checkmark {
+    background-color: #2f7260;
+}
+
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+.checkbox-container input:checked ~ .checkmark:after {
+    display: block;
+}
+
+.checkbox-container .checkmark:after {
+    left: 7px;
+    top: 3px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+
+.delete-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.2em;
+    color: #dc3545;
+}
+
+/* Modal para adicionar novo aço */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.4);
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 10% auto;
+    padding: 20px;
+    border-radius: 8px;
+    width: 400px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.close-btn {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.form-group input, .form-group select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.submit-btn {
+    background-color: #2f7260;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+@media (max-width: 768px) {
+    .materials-controls {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .search-box {
+        max-width: 100%;
+    }
+    
+    .add-material-btn {
+        width: 100%;
+        justify-content: center;
+    }
+}
