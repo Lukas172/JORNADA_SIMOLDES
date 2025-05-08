@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="IMG/icon.png" class="icon" alt="icon">
     <title>Simoldes Tools</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="CSS/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
     <header>
@@ -13,17 +14,44 @@
             <img src="IMG/logo.png" alt="Logo Simoldes" class="logo">
         </a>
         <nav>
-            <div class="nav-item" onclick="showTable('production')">
-                <span class="icon">MP</span>
-                <a href="#">Moldes em Produção</a>
-            </div>
-            <div class="nav-item" onclick="showTable('finished')">
-                <span class="icon">MF</span>
-                <a href="#">Moldes Finalizados</a>
-            </div>
-            <div class="nav-item" onclick="showTable('stock')">
-                <span class="icon">E</span>
-                <a href="#">Estoque</a>
+            <!-- Menu Lateral -->
+            <input type="checkbox" id="check">
+
+            <!-- Botões de controle - ambos na mesma posição -->
+            <label for="check">
+            <i class="fas fa-bars" id="btn"></i>
+            <i class="fas fa-times" id="cancel"></i>
+            </label>
+
+            <div class="sidebar">
+            <header>
+                <img src="IMG/logo.png" alt="Logo Simoldes" class="logo-sidebar">
+            </header>
+                
+            <a href="index.html" class="link-sidebar">
+                <i class="fas fa-home"></i>
+                <span>Home</span>
+            </a>
+            
+            <a href="#" class="link-sidebar" onclick="showTable('production')">
+                <i class="fas fa-industry"></i>
+                <span >Moldes em Produção</span>
+            </a>
+            
+            <a href="#" class="link-sidebar" onclick="showTable('finished')">
+                <i class="fas fa-check-circle"></i>
+                <span >Moldes Finalizados</span> 
+            </a>
+            
+            <a href="#" class="link-sidebar" onclick="showTable('stock')">
+                <i class="fas fa-boxes"></i>
+                <span >Estoque</span>
+            </a>
+            
+            <a href="#" class="link-sidebar">
+                <i class="fas fa-cog"></i>
+                <span>Configurações</span>
+            </a>
             </div>
         </nav>
     </header>
@@ -38,7 +66,7 @@
     </main>
 
     <footer>
-        <p>&copy; 2023 Simoldes Tools. Todos os direitos reservados.</p>
+        <p>&copy; 2025 Simoldes Tools. Todos os direitos reservados.</p>
     </footer>
 
     <script>
@@ -58,10 +86,16 @@
             ]
         };
 
+         // Variável para controlar a tabela atual
+        let currentTableType = '';
+
         // Função para mostrar a tabela correta
         function showTable(tableType) {
             const container = document.getElementById('table-container');
             container.classList.remove('initial-state');
+            
+            // Atualiza a tabela atual
+            currentTableType = tableType;
             
             let html = '';
             
@@ -76,6 +110,19 @@
             }
             
             container.innerHTML = html;
+        }
+
+        // Função para visualizar um item
+        function viewItem(itemId) {
+            // Verifica qual tabela está ativa
+            if (currentTableType === 'production' || currentTableType === 'finished') {
+                // Redireciona para a página de moldes finalizados
+                window.location.href = `molde-finalizado.html?id=${itemId}`;
+            } 
+            else if (currentTableType === 'stock') {
+                // Redireciona para a página de estoque de aços
+                window.location.href = `aco-estoque.html?id=${itemId}`;
+            }
         }
 
         // Função para criar a tabela HTML
@@ -103,15 +150,6 @@
             
             html += `</tbody></table>`;
             return html;
-        }
-
-        // Função para visualizar um item
-        function viewItem(itemId) {
-            // Redireciona para a página de detalhes com o ID do molde
-            window.location.href = `detalhes-molde.html?id=${itemId}`;
-            
-            // Alternativa se estiver usando pastas:
-            // window.location.href = `pages/detalhes-molde.html?id=${itemId}`;
         }
     </script>
 </body>

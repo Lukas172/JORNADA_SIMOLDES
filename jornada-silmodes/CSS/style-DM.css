@@ -1,219 +1,3 @@
-/* Reset e estilos base */
-html, body {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    height: 100%; /* IMPORTANTE */
-    background: #FFFFFF;
-    font-family: Arial, sans-serif;
-}
-
-/* Layout principal da página */
-body {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh; /* Altura mínima da viewport */
-}
-
-/* Header */
-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px;
-    background: transparent;
-    border-bottom: 1px solid #eee;
-}
-
-.logo {
-    width: 200px;
-    height: auto;
-}
-
-/* Navegação */
-nav {
-    display: flex;
-    gap: 20px;
-}
-
-nav a {
-    text-decoration: none;
-    color: #333;
-    font-weight: 500;
-    padding: 5px 10px;
-    transition: color 0.3s ease;
-}
-
-nav a:hover {
-    color: #0066cc;
-}
-
-/* Conteúdo principal cresce para empurrar o footer */
-main {
-    flex: 1;
-    padding: 20px 5%;
-    width: 100%;
-    box-sizing: border-box;
-}
-
-/* Seções */
-section {
-    margin-bottom: 30px;
-}
-
-/* Footer colado no fim */
-footer {
-    text-align: center;
-    padding: 20px;
-    background: #f4f4f4;
-    width: 100%;
-    box-sizing: border-box;
-}
-
-/* Ícones */
-#icon {
-    border-radius: 50%;
-}
-
-.logo {
-    width: 200px;
-}
-
-/* Itens do menu com ícones */
-.nav-item {
-    display: inline-flex;
-    align-items: center;
-    margin: 0;
-    cursor: pointer;
-    overflow: hidden;
-    transition: max-width 0.4s ease, background 0.3s ease, padding 0.4s ease;
-    border-radius: 50px;
-    background: #f0f0f0;
-    height: 40px;
-    width: auto;         /* Permite largura flexível */
-    max-width: 40px;     /* Estado recolhido */
-}
-
-.icon {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    background: #2f7260;
-    color: white;
-    font-weight: bold;
-}
-
-.nav-item a {
-    opacity: 0;
-    width: 0;
-    padding: 0;
-    white-space: nowrap;
-    transition: opacity 0.4s ease, width 0.4s ease, padding 0.4s ease;
-    color: #333;
-    text-decoration: none;
-    margin-left: 10px;
-}
-
-.nav-item:hover {
-    max-width: 300px;    /* Espaço suficiente para qualquer texto */
-    background: #e0e0e0;
-    padding-right: 1px;
-}
-
-.nav-item:hover a {
-    opacity: 1;
-    width: auto;
-    padding: 5px 10px;
-}
-
-/* Estilos para as tabelas */
-#table-container {
-    width: 100%;
-    margin-top: 20px;
-}
-
-.data-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 15px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-}
-
-.data-table th, .data-table td {
-    padding: 12px 15px;
-    text-align: left;
-    border-bottom: 1px solid #ddd;
-}
-
-.data-table th {
-    background-color: #2f7260;
-    color: white;
-    font-weight: bold;
-}
-
-.data-table tr:hover {
-    background-color: #f5f5f5;
-}
-
-.view-btn {
-    background-color: #2f7260;
-    color: white;
-    border: none;
-    padding: 8px 12px;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-.view-btn:hover {
-    background-color: #245748;
-}
-
-/* Responsividade para tabelas */
-@media (max-width: 768px) {
-    .data-table {
-        display: block;
-        overflow-x: auto;
-    }
-}
-/* Estilo para o estado inicial */
-.initial-state {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 60vh;
-    text-align: center;
-}
-
-.welcome-message {
-    max-width: 600px;
-    padding: 30px;
-    background-color: #f8f9fa;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-}
-
-.welcome-message h2 {
-    color: #2f7260;
-    margin-bottom: 15px;
-}
-
-.welcome-message p {
-    color: #555;
-    font-size: 1.1em;
-}
-
-/* Estilos para as tabelas (manter os existentes) */
-.data-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 15px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-}
-
 /* ... (mantenha todos os outros estilos de tabela existentes) ... */
 
 /* Estilos para a página de detalhes */
@@ -242,9 +26,26 @@ footer {
 
 .detail-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1fr; /* Duas colunas de largura igual */
+    grid-template-rows: auto auto;   /* Duas linhas com altura automática */
     gap: 20px;
 }
+
+/* Faz o terceiro card ocupar duas colunas */
+.card.materiais {
+    grid-column: span 2; /* Ocupa duas colunas */
+}
+
+/* Layout responsivo para mobile */
+@media (max-width: 768px) {
+    .detail-grid {
+        grid-template-columns: 1fr; /* Uma coluna em telas pequenas */
+    }
+    
+    .card.materiais {
+        grid-column: span 1; /* Volta a ocupar uma coluna */
+    }
+}   
 
 .card {
     background: white;
@@ -700,5 +501,59 @@ footer {
     .add-material-btn {
         width: 100%;
         justify-content: center;
+    }
+}
+
+/* Container do botão Salvar */
+.save-container {
+    padding: 20px;
+    background: #f8f9fa;
+    border-top: 1px solid #e0e0e0;
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+/* Botão Salvar principal */
+.save-all-btn {
+    background-color: #2f7260;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 6px;
+    font-size: 1.1em;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.save-all-btn:hover {
+    background-color: #245748;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+.save-all-btn:active {
+    transform: translateY(0);
+}
+
+.save-icon {
+    font-size: 1.2em;
+}
+/* Ajuste no container principal */
+.detail-container {
+    padding-bottom: 8px; /* Espaço para o botão flutuante */
+    position: relative;
+}
+
+/* Versão para mobile */
+@media (max-width: 768px) {
+    .save-all-btn {
+        width: 100%;
+        justify-content: center;
+        padding: 15px;
     }
 }

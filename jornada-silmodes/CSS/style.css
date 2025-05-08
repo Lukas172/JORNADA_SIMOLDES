@@ -1,0 +1,454 @@
+/**/
+/* Definição do HTML básico */
+/**/
+
+/* Reset e estilos base */
+html, body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    height: 100%; /* IMPORTANTE */
+    background: #FFFFFF;
+    font-family: Arial, sans-serif;
+}
+
+/* Layout principal da página */
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Altura mínima da viewport */
+}
+
+/* Header */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background: transparent;
+    border-bottom: 1px solid #eee;
+}
+
+.logo {
+    width: 200px;
+    height: auto;
+}
+
+/* Navegação */
+nav {
+    display: flex;
+    gap: 20px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+    padding: 5px 10px;
+    transition: color 0.3s ease;
+}
+
+nav a:hover {
+    color: #0066cc;
+}
+
+/* Conteúdo principal cresce para empurrar o footer */
+main {
+    flex: 1;
+    padding: 20px 5%;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Seções */
+section {
+    margin-bottom: 30px;
+}
+
+/* Footer colado no fim */
+footer {
+    text-align: center;
+    padding: 05px;
+    background: #f4f4f4;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Ícones */
+#icon {
+    border-radius: 50%;
+}
+
+.logo {
+    width: 200px;
+}
+
+
+/**/
+/* Estilos para as tabelas da página inicial */
+/**/
+
+#table-container {
+    width: 100%;
+    margin-top: 20px;
+}
+
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.data-table th, .data-table td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.data-table th {
+    background-color: #2f7260;
+    color: white;
+    font-weight: bold;
+}
+
+.data-table tr:hover {
+    background-color: #f5f5f5;
+}
+
+.view-btn {
+    background-color: #2f7260;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.view-btn:hover {
+    background-color: #245748;
+}
+
+/* Responsividade para tabelas */
+@media (max-width: 768px) {
+    .data-table {
+        display: block;
+        overflow-x: auto;
+    }
+}
+/* Estilos para as tabelas (manter os existentes) */
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+
+/**/
+/* Mensagem de Bem-Vindo na tela inicial */
+/**/
+
+.initial-state {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60vh;
+    text-align: center;
+}
+
+.welcome-message {
+    max-width: 600px;
+    padding: 30px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.welcome-message h2 {
+    color: #2f7260;
+    margin-bottom: 15px;
+}
+
+.welcome-message p {
+    color: #555;
+    font-size: 1.1em;
+}
+
+
+
+/**/
+/* Menu lateral para navegação*/
+/**/
+
+
+/* Menu lateral*/
+
+/* Sidebar Styles */
+:root {
+    --accent-color: #2f7260;
+    --gradient-color: #245748;
+  }
+  
+  .sidebar {
+    position: fixed;
+    z-index: 1000;
+    width: 280px;
+    right: -280px; /* Alterado para abrir na direita */
+    left: auto;
+    top: 0;
+    height: 100vh;
+    background-color: #202020;
+    transition: all 0.5s ease;
+    box-shadow: -5px 0 15px rgba(0,0,0,0.2);
+  }
+  
+  .sidebar header {
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 20px;
+    background-color: #323f3c;
+  }
+  
+  .logo-sidebar {
+    max-height: 50px;
+    max-width: 180px;
+  }
+  
+  .sidebar .link-sidebar {
+    display: flex;
+    align-items: center;
+    height: 60px;
+    width: 100%;
+    color: #ffffff;
+    padding: 0 30px;
+    box-sizing: border-box;
+    border-right: 5px solid transparent;
+    font-family: 'Lato', sans-serif;
+    text-decoration: none;
+    transition: all 0.3s ease;
+  }
+  
+  .link-sidebar.active, .link-sidebar:hover {
+    border-right: 5px solid var(--accent-color);
+    color: #fff;
+    background: linear-gradient(to right, var(--gradient-color), var(--accent-color));
+  }
+  
+  .sidebar .link-sidebar i {
+    font-size: 20px;
+    margin-right: 16px;
+    width: 24px;
+    text-align: center;
+
+  }
+  
+  .sidebar .link-sidebar span {
+    letter-spacing: 0.5px;
+  }
+  
+  #check {
+    display: none;
+  }
+  
+/* Botões de controle */
+label #btn, label #cancel {
+    position: fixed;
+    z-index: 1100;
+    right: 20px; /* Posiciona no lado direito */
+    left: auto; /* Remove posicionamento esquerdo */
+    top: 25px;
+    cursor: pointer;
+    background-color: #2f7260;
+    border-radius: 50%;
+    height: 50px;
+    width: 50px;
+    text-align: center;
+    line-height: 40px;
+    font-size: 30px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    transition: all 0.3s ease;
+    align-items: center;
+    align-content: center;
+  }
+  
+  /* Label principal */
+  label[for="check"] {
+    position: fixed;
+    z-index: 1000;
+    right: 20px; /* Posiciona no lado direito */
+    left: auto; /* Remove posicionamento esquerdo */
+    top: 20px;
+    cursor: pointer;
+  }
+  
+  label #btn:hover, label #cancel:hover {
+    transform: scale(1.1);
+  }
+  
+  label #cancel {
+    opacity: 0;
+    visibility: hidden;
+  }
+  
+  #check:checked ~ .sidebar {
+    right: 0; /* Alterado para abrir na direita */
+  }
+  
+  #check:checked ~ label #btn {
+    opacity: 0;
+    visibility: hidden;
+    right: 300px; /* Move para a esquerda do menu aberto */
+    left: auto;   
+  }
+  
+  #check:checked ~ label #cancel {
+    opacity: 1;
+    visibility: visible;
+    right: 300px; /* Posiciona no mesmo lugar do botão de abrir */
+    left: auto;
+  }
+  
+  /* Ajuste para o conteúdo principal */
+  .detail-container {
+    margin-left: 0;
+    transition: margin-right 0.5s ease; /* Alterado para margin-right */
+  }
+  
+  #check:checked ~ .detail-container {
+    margin-right: 280px; /* Alterado para margin-right */
+  }
+  
+  /* Responsividade */
+  /* === Estilos Gerais (Desktop) === */
+label[for="check"],
+#btn,
+#cancel {
+  position: fixed;
+  right: 20px;
+  top: 20px;
+  z-index: 1000;
+  transition: all 0.3s ease;
+}
+
+/* === Ajustes para Mobile === */
+@media (max-width: 768px) {
+    /* Botão de abrir (sempre visível quando o menu está fechado) */
+    #btn {
+      right: auto;
+      left: 10px;
+    }
+  
+    /* Botão de fechar (só aparece quando o menu está aberto) */
+    #cancel {
+      right: auto;
+      left: 10px; /* Posição padrão (igual ao botão de abrir) */
+      opacity: 0;
+      visibility: hidden;
+    }
+  
+    /* Quando o menu está ABERTO */
+    #check:checked ~ label #btn {
+      opacity: 0;
+      visibility: hidden;
+    }
+  
+    #check:checked ~ label #cancel {
+      opacity: 1;
+      visibility: visible;
+      right: 300px; /* Posiciona no mesmo lugar do botão de abrir */
+      left: auto;    }
+  }
+
+  /* CONTROLE DO MENU LATERAL */
+#check {
+    display: none; /* Esconde o checkbox */
+  }
+  
+  /* ESTILO DA LABEL QUE CONTÉM OS BOTÕES */
+  label[for="check"] {
+    position: fixed;
+    z-index: 1000;
+    left: 20px;
+    top: 20px;
+    cursor: pointer;
+  }
+  
+  /* BOTÃO DE ABRIR (ÍCONE DE BARRAS) */
+  #btn {
+    display: block;
+    color: white;
+    background-color: #2f7260;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 40px;
+    font-size: 20px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    transition: all 0.3s ease;
+  }
+  
+  /* BOTÃO DE FECHAR (ÍCONE X) */
+  #cancel {
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: white;
+    background-color: #d9534f;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 40px;
+    font-size: 20px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+  }
+  
+  /* EFEITOS DE HOVER */
+  #btn:hover, #cancel:hover {
+    transform: scale(1.1);
+    filter: brightness(1.1);
+  }
+  
+  /* QUANDO O MENU ESTÁ ABERTO */
+  #check:checked ~ label #btn {
+    opacity: 0;
+    visibility: hidden;
+  }
+  
+  #check:checked ~ label #cancel {
+    opacity: 1;
+    visibility: visible;
+  }
+  
+  /* AJUSTES PARA O MENU LATERAL */
+  .sidebar {
+    position: fixed;
+    right: -280px; /* Escondido inicialmente */
+    top: 0;
+    width: 280px;
+    height: 100vh;
+    background: #202020;
+    transition: all 0.3s ease;
+    z-index: 999;
+  }
+  
+  #check:checked ~ .sidebar {
+    right: 0; /* Mostra o menu */
+  }
+  
+  /* COMPENSAÇÃO DO CONTEÚDO PRINCIPAL */
+  .detail-container {
+    transition: transform 0.3s ease;
+  }
+  
+  #check:checked ~ .detail-container {
+    transform: translateX(-280px);
+  }
