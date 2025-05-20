@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="IMG/icon.png" class="icon" alt="icon">
     <title>Detalhes do Molde MP-001 | Simoldes Tools</title>
     <link rel="stylesheet" href="CSS/style.css">
     <link rel="stylesheet" href="CSS/style-DM.css">
@@ -95,9 +96,14 @@
             <section class="card materiais">
                 <h2>Materiais Necessários</h2>
                 <div class="materials-controls">
-                    <button class="add-material-btn" id="add-steel-btn">
-                        <span>+</span> Adicionar Aço
-                    </button>
+                    <div class="import-buttons">
+                        <button class="add-material-btn" id="add-steel-btn">
+                            <span>+</span> Adicionar Aço
+                        </button>
+                        <button class="import-excel-btn" id="import-excel-btn">
+                            <span>📊</span> Importar do Excel
+                        </button>
+                    </div>
                     <div class="search-box">
                         <input type="text" id="steel-search" placeholder="Buscar aço...">
                         <button id="search-btn">🔍</button>
@@ -250,6 +256,13 @@
                 console.log('Validações salvas:', validacoes);
                 alert('Validações salvas com sucesso!');
             });
+            
+            // Botão para importar do Excel
+            document.getElementById('import-excel-btn').addEventListener('click', function() {
+                // Esta função será implementada futuramente
+                alert('Funcionalidade de importação do Excel será implementada em breve!');
+                console.log('Botão de importação do Excel clicado - funcionalidade pendente');
+            });
         }
 
         // Manipulador de clique para edição
@@ -387,5 +400,62 @@
             });
         });
     </script>
+    
+    <style>
+        /* Container dos botões */
+        .import-buttons {
+            display: flex;
+            gap: 10px;
+            align-items: center; /* Alinhamento vertical */
+        }
+
+        /* Estilo base para ambos botões */
+        .add-material-btn, 
+        .import-excel-btn {
+            /* Reset de estilos */
+            margin: 0;
+            padding: 0;
+            border: none;
+            font: inherit;
+            
+            /* Estilos customizados */
+            background-color: #2e7d32;
+            color: white;
+            padding: 8px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            
+            /* Layout flex para alinhamento */
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            
+            /* Dimensões fixas */
+            height: 36px;
+            min-width: 150px;
+            box-sizing: border-box;
+            
+            /* Texto */
+            font-size: 14px;
+            line-height: 1;
+            white-space: nowrap;
+            text-align: center;
+        }
+
+        /* Ajuste específico para o ícone '+' */
+        .add-material-btn {
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+
+        /* Espaçamento interno dos elementos */
+        .add-material-btn span, 
+        .import-excel-btn span {
+            display: inline-block;
+            vertical-align: middle;
+            margin-right: 5px;
+            font-size: 16px;
+        }
+    </style>
 </body>
 </html>
