@@ -91,76 +91,90 @@
                 </div>
             </section>
 
-            <!-- Seção 2: Insumos e Materiais -->
-            <!-- Substitua a seção de Materiais Necessários por este código -->
-            <section class="card materiais">
-                <h2>Materiais Necessários</h2>
-                <div class="materials-controls">
+            <!-- Seção 2: Controle de Peças do Molde -->
+            <section class="card pecas-molde full-width">
+                <h2>Controle de Peças do Molde</h2>
+                <div class="table-controls">
                     <div class="import-buttons">
-                        <button class="add-material-btn" id="add-steel-btn">
-                            <span>+</span> Adicionar Aço
+                        <button class="add-peca-btn" id="add-peca-btn">
+                            <span>+</span> Adicionar Peça
                         </button>
                         <button class="import-excel-btn" id="import-excel-btn">
                             <span>📊</span> Importar do Excel
                         </button>
                     </div>
                     <div class="search-box">
-                        <input type="text" id="steel-search" placeholder="Buscar aço...">
-                        <button id="search-btn">🔍</button>
+                        <input type="text" id="peca-search" placeholder="Buscar peça...">
+                        <button id="search-peca-btn">🔍</button>
                     </div>
                 </div>
                 
                 <div class="table-responsive">
-                    <table class="materials-table">
+                    <table class="pecas-table">
                         <thead>
                             <tr>
-                                <th>Tipo de Aço</th>
-                                <th>Código</th>
-                                <th>Quantidade (kg)</th>
-                                <th>Em Estoque</th>
-                                <th>Processado</th>
+                                <th>Item</th>
+                                <th>Descrição</th>
+                                <th>Modelo 3D</th>
+                                <th>CHEGADA DO AÇO</th>
+                                <th>PROGRAMA NC</th>
+                                <th>DMG</th>
+                                <th>600 II</th>
+                                <th>800 II</th>
+                                <th>600 I</th>
+                                <th>800 I</th>
+                                <th>IXION II</th>
                                 <th>Ações</th>
                             </tr>
                         </thead>
-                        <tbody id="steel-list">
+                        <tbody id="pecas-list">
                             <tr>
-                                <td>Aço 1045</td>
-                                <td>AC-1045</td>
-                                <td><input type="number" value="25" min="0" class="qty-input"></td>
-                                <td class="text-center">
-                                    <label class="checkbox-container">
-                                        <input type="checkbox" checked>
-                                        <span class="checkmark"></span>
-                                    </label>
-                                </td>
-                                <td class="text-center">
-                                    <label class="checkbox-container">
-                                        <input type="checkbox">
-                                        <span class="checkmark"></span>
-                                    </label>
-                                </td>
-                                <td class="text-center">
+                                <td>1</td>
+                                <td>Placa Base</td>
+                                <td><input type="checkbox" checked></td>
+                                <td><input type="checkbox" checked></td>
+                                <td><input type="checkbox" checked></td>
+                                <td><input type="checkbox" checked></td>
+                                <td><input type="checkbox"></td>
+                                <td><input type="checkbox"></td>
+                                <td><input type="checkbox"></td>
+                                <td><input type="checkbox"></td>
+                                <td><input type="checkbox"></td>
+                                <td>
                                     <button class="action-btn" title="Editar">✏️</button>
                                     <button class="action-btn" title="Remover">🗑️</button>
                                 </td>
                             </tr>
                             <tr>
-                                <td>Aço 4140</td>
-                                <td>AC-4140</td>
-                                <td><input type="number" value="18" min="0" class="qty-input"></td>
-                                <td class="text-center">
-                                    <label class="checkbox-container">
-                                        <input type="checkbox">
-                                        <span class="checkmark"></span>
-                                    </label>
+                                <td>100</td>
+                                <td>Núcleo Principal</td>
+                                <td><input type="checkbox" checked></td>
+                                <td><input type="checkbox" checked></td>
+                                <td><input type="checkbox" checked></td>
+                                <td><input type="checkbox" checked></td>
+                                <td><input type="checkbox"></td>
+                                <td><input type="checkbox"></td>
+                                <td><input type="checkbox"></td>
+                                <td><input type="checkbox"></td>
+                                <td><input type="checkbox"></td>
+                                <td>
+                                    <button class="action-btn" title="Editar">✏️</button>
+                                    <button class="action-btn" title="Remover">🗑️</button>
                                 </td>
-                                <td class="text-center">
-                                    <label class="checkbox-container">
-                                        <input type="checkbox" checked>
-                                        <span class="checkmark"></span>
-                                    </label>
-                                </td>
-                                <td class="text-center">
+                            </tr>
+                            <tr>
+                                <td>200</td>
+                                <td>Cavidade Superior</td>
+                                <td><input type="checkbox" checked></td>
+                                <td><input type="checkbox" checked></td>
+                                <td><input type="checkbox" checked></td>
+                                <td><input type="checkbox" checked></td>
+                                <td><input type="checkbox"></td>
+                                <td><input type="checkbox"></td>
+                                <td><input type="checkbox"></td>
+                                <td><input type="checkbox"></td>
+                                <td><input type="checkbox"></td>
+                                <td>
                                     <button class="action-btn" title="Editar">✏️</button>
                                     <button class="action-btn" title="Remover">🗑️</button>
                                 </td>
@@ -169,7 +183,6 @@
                     </table>
                 </div>
             </section>
-
         </div>
 
         <!-- Botão de Salvar -->
@@ -208,9 +221,10 @@
                 dataInicio: "15/03/2023",
                 previsaoEntrega: "30/04/2023",
                 responsavel: "Eng. Carlos Silva",
-                materiais: [
-                    { nome: "Molde 1678", codigo: "1678", quantidade: "25 kg", status: "disponivel", fornecedor: "Metalúrgica XYZ" },
-                    { nome: "Molde 1678", codigo: "1678", quantidade: "18 kg", status: "pendente", fornecedor: "Indústria ABC" }
+                pecas: [
+                    { item: "1", descricao: "Placa Base", status: "100", etapas: { modelo3d: true, chegadaAco: true, programaNC: true, dmg: true } },
+                    { item: "100", descricao: "Núcleo Principal", status: "121", etapas: { modelo3d: true, chegadaAco: true, programaNC: true, dmg: true } },
+                    { item: "200", descricao: "Cavidade Superior", status: "200", etapas: { modelo3d: true, chegadaAco: true, programaNC: true, dmg: true } }
                 ],
                 etapas: [
                     { nome: "Projeto 3D", status: "completed", responsavel: "Equipe CAD", conclusao: "10/03/2023" },
@@ -235,6 +249,34 @@
             Object.keys(fields).forEach((key, index) => {
                 document.querySelectorAll('.editable-field .value')[index].textContent = fields[key];
             });
+            
+            // Preenche a tabela de peças (se existirem dados)
+            if (data.pecas && data.pecas.length > 0) {
+                const pecasList = document.getElementById('pecas-list');
+                pecasList.innerHTML = ''; // Limpa a tabela
+                
+                data.pecas.forEach(peca => {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td>${peca.item}</td>
+                        <td>${peca.descricao}</td>
+                        <td><input type="checkbox" ${peca.etapas.modelo3d ? 'checked' : ''}></td>
+                        <td><input type="checkbox" ${peca.etapas.chegadaAco ? 'checked' : ''}></td>
+                        <td><input type="checkbox" ${peca.etapas.programaNC ? 'checked' : ''}></td>
+                        <td><input type="checkbox" ${peca.etapas.dmg ? 'checked' : ''}></td>
+                        <td><input type="checkbox"></td>
+                        <td><input type="checkbox"></td>
+                        <td><input type="checkbox"></td>
+                        <td><input type="checkbox"></td>
+                        <td><input type="checkbox"></td>
+                        <td>
+                            <button class="action-btn" title="Editar">✏️</button>
+                            <button class="action-btn" title="Remover">🗑️</button>
+                        </td>
+                    `;
+                    pecasList.appendChild(row);
+                });
+            }
         }
 
         // Configura todos os event listeners
@@ -244,25 +286,17 @@
                 btn.addEventListener('click', handleEditClick);
             });
 
-            // Botão para adicionar material
-
-            // Botão para salvar validações
-            document.querySelector('.save-btn').addEventListener('click', () => {
-                const validacoes = {
-                    qualidade: document.querySelectorAll('.validation-select')[0].value,
-                    engenharia: document.querySelectorAll('.validation-select')[1].value,
-                    observacoes: document.querySelectorAll('.validation-notes')[1].value
-                };
-                console.log('Validações salvas:', validacoes);
-                alert('Validações salvas com sucesso!');
-            });
+            // Botão para adicionar peça
+            document.getElementById('add-peca-btn').addEventListener('click', showAddPecaModal);
             
             // Botão para importar do Excel
-            document.getElementById('import-excel-btn').addEventListener('click', function() {
-                // Esta função será implementada futuramente
-                alert('Funcionalidade de importação do Excel será implementada em breve!');
-                console.log('Botão de importação do Excel clicado - funcionalidade pendente');
-            });
+            document.getElementById('import-excel-btn').addEventListener('click', importFromExcel);
+            
+            // Botão para salvar
+            document.getElementById('save-all-data').addEventListener('click', saveAllData);
+            
+            // Botão de busca
+            document.getElementById('search-peca-btn').addEventListener('click', searchPecas);
         }
 
         // Manipulador de clique para edição
@@ -294,167 +328,378 @@
             this.onclick = saveHandler;
         }
 
-        // Inicia a página quando o DOM estiver pronto
-        document.addEventListener('DOMContentLoaded', initPage);
-
-        // Modal para adicionar novo aço
-        const modal = document.createElement('div');
-        modal.className = 'modal';
-        modal.innerHTML = `
-            <div class="modal-content">
-                <span class="close-btn">&times;</span>
-                <h3>Adicionar Novo Aço</h3>
-                <form id="add-steel-form">
-                    <div class="form-group">
-                        <label for="steel-type">Tipo de Aço:</label>
-                        <input type="text" id="steel-type" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="steel-code">Código:</label>
-                        <input type="text" id="steel-code" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="steel-qty">Quantidade (kg):</label>
-                        <input type="number" id="steel-qty" min="1" value="1" required>
-                    </div>
-                    <button type="submit" class="submit-btn">Adicionar</button>
-                </form>
-            </div>
-        `;
-        document.body.appendChild(modal);
-
-        // Abrir modal
-        document.getElementById('add-steel-btn').addEventListener('click', function() {
-            modal.style.display = 'block';
-        });
-
-        // Fechar modal
-        document.querySelector('.close-btn').addEventListener('click', function() {
-            modal.style.display = 'none';
-        });
-
-        // Adicionar novo aço
-        document.getElementById('add-steel-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const type = document.getElementById('steel-type').value;
-            const code = document.getElementById('steel-code').value;
-            const qty = document.getElementById('steel-qty').value;
-            
-            // Adiciona à tabela
-            const newRow = document.createElement('tr');
-            newRow.innerHTML = `
-                <td>${type}</td>
-                <td>${code}</td>
-                <td><input type="number" value="${qty}" min="0" class="qty-input"></td>
-                <td>
-                    <label class="checkbox-container">
-                        <input type="checkbox">
-                        <span class="checkmark"></span>
-                    </label>
-                </td>
-                <td>
-                    <label class="checkbox-container">
-                        <input type="checkbox">
-                        <span class="checkmark"></span>
-                    </label>
-                </td>
-                <td>
-                    <button class="delete-btn" title="Remover">🗑️</button>
-                </td>
+        // Mostrar modal para adicionar peça
+        function showAddPecaModal() {
+            const modal = document.createElement('div');
+            modal.className = 'modal';
+            modal.innerHTML = `
+                <div class="modal-content">
+                    <span class="close-btn">&times;</span>
+                    <h3>Adicionar Nova Peça</h3>
+                    <form id="add-peca-form">
+                        <div class="form-group">
+                            <label for="peca-item">Item:</label>
+                            <input type="text" id="peca-item" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="peca-descricao">Descrição:</label>
+                            <input type="text" id="peca-descricao" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Etapas concluídas:</label>
+                            <div class="checkbox-group">
+                                <label><input type="checkbox" name="modelo3d"> Modelo 3D</label>
+                                <label><input type="checkbox" name="chegadaAco"> CHEGADA DO AÇO</label>
+                                <label><input type="checkbox" name="programaNC"> PROGRAMA NC</label>
+                                <label><input type="checkbox" name="dmg"> DMG</label>
+                                <label><input type="checkbox" name="600II"> 600 II</label>
+                                <label><input type="checkbox" name="800II"> 800 II</label>
+                                <label><input type="checkbox" name="600I"> 600 I</label>
+                                <label><input type="checkbox" name="800I"> 800 I</label>
+                                <label><input type="checkbox" name="ixionII"> IXION II</label>
+                            </div>
+                        </div>
+                        <button type="submit" class="submit-btn">Adicionar</button>
+                    </form>
+                </div>
             `;
+            document.body.appendChild(modal);
             
-            document.getElementById('steel-list').appendChild(newRow);
-            
-            // Adiciona evento ao botão de deletar
-            newRow.querySelector('.delete-btn').addEventListener('click', function() {
-                this.closest('tr').remove();
+            // Fechar modal
+            modal.querySelector('.close-btn').addEventListener('click', function() {
+                modal.remove();
             });
             
-            // Limpa o formulário e fecha o modal
-            this.reset();
-            modal.style.display = 'none';
-        });
-
-        // Função para deletar aços
-        document.querySelectorAll('.delete-btn').forEach(btn => {
-            btn.addEventListener('click', function() {
-                this.closest('tr').remove();
+            // Adicionar nova peça
+            document.getElementById('add-peca-form').addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const item = document.getElementById('peca-item').value;
+                const descricao = document.getElementById('peca-descricao').value;
+                const formData = new FormData(this);
+                
+                // Adiciona à tabela
+                const newRow = document.createElement('tr');
+                newRow.innerHTML = `
+                    <td>${item}</td>
+                    <td>${descricao}</td>
+                    <td><input type="checkbox" ${formData.get('modelo3d') ? 'checked' : ''}></td>
+                    <td><input type="checkbox" ${formData.get('chegadaAco') ? 'checked' : ''}></td>
+                    <td><input type="checkbox" ${formData.get('programaNC') ? 'checked' : ''}></td>
+                    <td><input type="checkbox" ${formData.get('dmg') ? 'checked' : ''}></td>
+                    <td><input type="checkbox" ${formData.get('600II') ? 'checked' : ''}></td>
+                    <td><input type="checkbox" ${formData.get('800II') ? 'checked' : ''}></td>
+                    <td><input type="checkbox" ${formData.get('600I') ? 'checked' : ''}></td>
+                    <td><input type="checkbox" ${formData.get('800I') ? 'checked' : ''}></td>
+                    <td><input type="checkbox" ${formData.get('ixionII') ? 'checked' : ''}></td>
+                    <td>
+                        <button class="action-btn" title="Editar">✏️</button>
+                        <button class="action-btn" title="Remover">🗑️</button>
+                    </td>
+                `;
+                
+                document.getElementById('pecas-list').appendChild(newRow);
+                
+                // Adiciona eventos aos botões
+                newRow.querySelectorAll('.action-btn')[0].addEventListener('click', function() {
+                    editPeca(this.closest('tr'));
+                });
+                
+                newRow.querySelectorAll('.action-btn')[1].addEventListener('click', function() {
+                    this.closest('tr').remove();
+                });
+                
+                // Remove o modal
+                modal.remove();
             });
-        });
+            
+            modal.style.display = 'block';
+        }
 
-        // Função de busca
-        document.getElementById('search-btn').addEventListener('click', function() {
-            const searchTerm = document.getElementById('steel-search').value.toLowerCase();
-            const rows = document.querySelectorAll('#steel-list tr');
+        // Importar do Excel
+        function importFromExcel() {
+            // Esta função será implementada futuramente
+            alert('Funcionalidade de importação do Excel será implementada em breve!');
+            console.log('Botão de importação do Excel clicado - funcionalidade pendente');
+            
+            // Simulação de importação
+            const pecasSimuladas = [
+                { item: "11", descricao: "Pino Guia", etapas: { modelo3d: false, chegadaAco: false, programaNC: false, dmg: false } },
+                { item: "14", descricao: "Ejetor", etapas: { modelo3d: false, chegadaAco: false, programaNC: false, dmg: false } },
+                { item: "1451", descricao: "Placa Suporte", etapas: { modelo3d: false, chegadaAco: false, programaNC: false, dmg: false } },
+                { item: "1570", descricao: "Bloco de Fixação", etapas: { modelo3d: false, chegadaAco: false, programaNC: false, dmg: false } },
+                { item: "1606", descricao: "Canal Alimentador", etapas: { modelo3d: false, chegadaAco: false, programaNC: false, dmg: false } },
+                { item: "17", descricao: "Bucha", etapas: { modelo3d: false, chegadaAco: false, programaNC: false, dmg: false } },
+                { item: "1700", descricao: "Placa de Retorno", etapas: { modelo3d: false, chegadaAco: false, programaNC: false, dmg: false } },
+                { item: "300", descricao: "Núcleo Móvel", etapas: { modelo3d: false, chegadaAco: false, programaNC: false, dmg: false } },
+                { item: "300A", descricao: "Insert A", etapas: { modelo3d: false, chegadaAco: false, programaNC: false, dmg: false } },
+                { item: "300B", descricao: "Insert B", etapas: { modelo3d: false, chegadaAco: false, programaNC: false, dmg: false } },
+                { item: "300C", descricao: "Insert C", etapas: { modelo3d: false, chegadaAco: false, programaNC: false, dmg: false } },
+                { item: "301", descricao: "Placa Ejetora", etapas: { modelo3d: false, chegadaAco: false, programaNC: false, dmg: false } },
+                { item: "301A", descricao: "Pino Ejetor A", etapas: { modelo3d: false, chegadaAco: false, programaNC: false, dmg: false } },
+                { item: "301B", descricao: "Pino Ejetor B", etapas: { modelo3d: false, chegadaAco: false, programaNC: false, dmg: false } },
+                { item: "301C", descricao: "Pino Ejetor C", etapas: { modelo3d: false, chegadaAco: false, programaNC: false, dmg: false } }
+            ];
+            
+            const pecasList = document.getElementById('pecas-list');
+            
+            pecasSimuladas.forEach(peca => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${peca.item}</td>
+                    <td>${peca.descricao}</td>
+                    <td><input type="checkbox" ${peca.etapas.modelo3d ? 'checked' : ''}></td>
+                    <td><input type="checkbox" ${peca.etapas.chegadaAco ? 'checked' : ''}></td>
+                    <td><input type="checkbox" ${peca.etapas.programaNC ? 'checked' : ''}></td>
+                    <td><input type="checkbox" ${peca.etapas.dmg ? 'checked' : ''}></td>
+                    <td><input type="checkbox"></td>
+                    <td><input type="checkbox"></td>
+                    <td><input type="checkbox"></td>
+                    <td><input type="checkbox"></td>
+                    <td><input type="checkbox"></td>
+                    <td>
+                        <button class="action-btn" title="Editar">✏️</button>
+                        <button class="action-btn" title="Remover">🗑️</button>
+                    </td>
+                `;
+                pecasList.appendChild(row);
+                
+                // Adiciona eventos aos botões
+                row.querySelectorAll('.action-btn')[0].addEventListener('click', function() {
+                    editPeca(this.closest('tr'));
+                });
+                
+                row.querySelectorAll('.action-btn')[1].addEventListener('click', function() {
+                    this.closest('tr').remove();
+                });
+            });
+        }
+
+        // Salvar todos os dados
+        function saveAllData() {
+            const pecas = [];
+            document.querySelectorAll('#pecas-list tr').forEach(row => {
+                const cells = row.cells;
+                pecas.push({
+                    item: cells[0].textContent,
+                    descricao: cells[1].textContent,
+                    etapas: {
+                        modelo3d: cells[2].querySelector('input').checked,
+                        chegadaAco: cells[3].querySelector('input').checked,
+                        programaNC: cells[4].querySelector('input').checked,
+                        dmg: cells[5].querySelector('input').checked,
+                        "600II": cells[6].querySelector('input').checked,
+                        "800II": cells[7].querySelector('input').checked,
+                        "600I": cells[8].querySelector('input').checked,
+                        "800I": cells[9].querySelector('input').checked,
+                        ixionII: cells[10].querySelector('input').checked
+                    }
+                });
+            });
+            
+            console.log('Dados salvos:', pecas);
+            alert('Dados das peças salvos com sucesso!');
+        }
+
+        // Buscar peças
+        function searchPecas() {
+            const searchTerm = document.getElementById('peca-search').value.toLowerCase();
+            const rows = document.querySelectorAll('#pecas-list tr');
             
             rows.forEach(row => {
-                const steelType = row.cells[0].textContent.toLowerCase();
-                const steelCode = row.cells[1].textContent.toLowerCase();
+                const pecaItem = row.cells[0].textContent.toLowerCase();
+                const pecaDescricao = row.cells[1].textContent.toLowerCase();
                 
-                if (steelType.includes(searchTerm) || steelCode.includes(searchTerm)) {
+                if (pecaItem.includes(searchTerm) || pecaDescricao.includes(searchTerm)) {
                     row.style.display = '';
                 } else {
                     row.style.display = 'none';
                 }
             });
-        });
+        }
+
+        // Inicia a página quando o DOM estiver pronto
+        document.addEventListener('DOMContentLoaded', initPage);
     </script>
     
     <style>
-        /* Container dos botões */
+        /* Layout do grid */
+        .detail-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .detail-grid .full-width {
+            grid-column: 1 / -1;
+        }
+        
+        /* Estilos para a tabela de peças */
+        .pecas-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+            font-size: 14px;
+        }
+        
+        .pecas-table th, .pecas-table td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+        }
+        
+        .pecas-table th {
+            background-color: #f2f2f2;
+            font-weight: bold;
+            white-space: nowrap;
+        }
+        
+        .pecas-table td:nth-child(2) {
+            text-align: left;
+            min-width: 150px;
+        }
+        
+        .pecas-table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        
+        .pecas-table tr:hover {
+            background-color: #f1f1f1;
+        }
+        
+        .pecas-table input[type="checkbox"] {
+            transform: scale(1.2);
+        }
+        
+        .table-controls {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+        }
+        
         .import-buttons {
             display: flex;
             gap: 10px;
-            align-items: center; /* Alinhamento vertical */
         }
-
-        /* Estilo base para ambos botões */
-        .add-material-btn, 
-        .import-excel-btn {
-            /* Reset de estilos */
-            margin: 0;
-            padding: 0;
-            border: none;
-            font: inherit;
-            
-            /* Estilos customizados */
+        
+        .add-peca-btn, .import-excel-btn {
             background-color: #2e7d32;
             color: white;
             padding: 8px 12px;
+            border: none;
             border-radius: 4px;
             cursor: pointer;
-            
-            /* Layout flex para alinhamento */
-            display: inline-flex;
+            display: flex;
             align-items: center;
-            justify-content: center;
-            
-            /* Dimensões fixas */
-            height: 36px;
-            min-width: 150px;
-            box-sizing: border-box;
-            
-            /* Texto */
-            font-size: 14px;
-            line-height: 1;
-            white-space: nowrap;
-            text-align: center;
         }
-
-        /* Ajuste específico para o ícone '+' */
-        .add-material-btn {
-            padding-left: 10px;
-            padding-right: 10px;
-        }
-
-        /* Espaçamento interno dos elementos */
-        .add-material-btn span, 
-        .import-excel-btn span {
-            display: inline-block;
-            vertical-align: middle;
+        
+        .add-peca-btn span, .import-excel-btn span {
             margin-right: 5px;
             font-size: 16px;
+        }
+        
+        .search-box {
+            display: flex;
+            align-items: center;
+        }
+        
+        .search-box input {
+            padding: 6px;
+            border: 1px solid #ddd;
+            border-radius: 4px 0 0 4px;
+            width: 200px;
+        }
+        
+        .search-box button {
+            padding: 6px 10px;
+            border: 1px solid #ddd;
+            border-left: none;
+            background-color: #f8f8f8;
+            border-radius: 0 4px 4px 0;
+            cursor: pointer;
+        }
+        
+        /* Estilos para o modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+        }
+        
+        .modal-content {
+            background-color: white;
+            margin: 10% auto;
+            padding: 20px;
+            border-radius: 5px;
+            width: 80%;
+            max-width: 500px;
+            position: relative;
+        }
+        
+        .close-btn {
+            position: absolute;
+            right: 15px;
+            top: 10px;
+            font-size: 24px;
+            cursor: pointer;
+        }
+        
+        .form-group {
+            margin-bottom: 15px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        
+        .form-group input[type="text"],
+        .form-group input[type="number"] {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        
+        .checkbox-group {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 8px;
+        }
+        
+        .checkbox-group label {
+            display: flex;
+            align-items: center;
+            font-weight: normal;
+        }
+        
+        .checkbox-group input {
+            margin-right: 5px;
+        }
+        
+        .submit-btn {
+            background-color: #2e7d32;
+            color: white;
+            padding: 8px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        
+        .action-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 0 3px;
         }
     </style>
 </body>
