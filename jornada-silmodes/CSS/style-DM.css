@@ -86,121 +86,6 @@
     color: #721c24;
 }
 
-/* Tabela de Materiais */
-/* Container principal */
-.materiais {
-    overflow-x: auto; /* Permite rolagem horizontal se necessário */
-    padding: 20px;
-    background: white;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-}
-
-/* Tabela */
-.materials-table {
-    width: 100%;
-    min-width: 800px; /* Largura mínima para evitar compressão */
-    border-collapse: separate;
-    border-spacing: 0;
-}
-
-/* Cabeçalho */
-.materials-table th {
-    background: #2f7260;
-    color: white;
-    padding: 15px 12px;
-    text-align: left;
-    white-space: nowrap; /* Impede quebra de linha */
-    font-weight: 500;
-}
-
-/* Células */
-.materials-table td {
-    padding: 15px 12px;
-    border-bottom: 1px solid #f0f0f0;
-    vertical-align: middle;
-}
-
-/* Linhas alternadas para melhor legibilidade */
-.materials-table tbody tr:nth-child(even) {
-    background-color: #f9f9f9;
-}
-
-/* Inputs de quantidade */
-.qty-input {
-    width: 70px;
-    padding: 8px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    text-align: center;
-}
-
-/* Checkboxes */
-.checkbox-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-/* Botões de ação */
-.action-btn {
-    background: none;
-    border: none;
-    cursor: pointer;
-    font-size: 1.1em;
-    margin: 0 5px;
-    color: #2f7260;
-}
-
-/* Barra de controles */
-.materials-controls {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
-    flex-wrap: wrap;
-    gap: 15px;
-}
-
-/* Botão de adicionar */
-.add-material-btn {
-    background: #2f7260;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 4px;
-    cursor: pointer;
-    font-weight: 500;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
-
-/* Campo de busca */
-.search-box {
-    display: flex;
-    align-items: center;
-    background: white;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    padding: 5px 10px;
-    flex-grow: 1;
-    max-width: 300px;
-}
-
-#steel-search {
-    border: none;
-    outline: none;
-    padding: 8px;
-    width: 100%;
-}
-
-#search-btn {
-    background: none;
-    border: none;
-    cursor: pointer;
-    color: #666;
-}
 /* Timeline de Etapas */
 .timeline {
     margin-top: 20px;
@@ -556,4 +441,187 @@
         justify-content: center;
         padding: 15px;
     }
+}
+
+/**/
+/* Nova tabela de peças do molde  */
+/**/
+
+/* Layout do grid */
+.detail-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.detail-grid .full-width {
+    grid-column: 1 / -1;
+}
+
+/* Estilos para a tabela de peças */
+.pecas-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+    font-size: 14px;
+}
+
+.pecas-table th, .pecas-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+}
+
+.pecas-table th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+.pecas-table td:nth-child(2) {
+    text-align: left;
+    min-width: 150px;
+}
+
+.pecas-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.pecas-table tr:hover {
+    background-color: #f1f1f1;
+}
+
+.pecas-table input[type="checkbox"] {
+    transform: scale(1.2);
+}
+
+.table-controls {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
+
+.import-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.add-peca-btn, .import-excel-btn {
+    background-color: #2e7d32;
+    color: white;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+.add-peca-btn span, .import-excel-btn span {
+    margin-right: 5px;
+    font-size: 16px;
+}
+
+.search-box {
+    display: flex;
+    align-items: center;
+}
+
+.search-box input {
+    padding: 6px;
+    border: 1px solid #ddd;
+    border-radius: 4px 0 0 4px;
+    width: 200px;
+}
+
+.search-box button {
+    padding: 6px 10px;
+    border: 1px solid #ddd;
+    border-left: none;
+    background-color: #f8f8f8;
+    border-radius: 0 4px 4px 0;
+    cursor: pointer;
+}
+
+/* Estilos para o modal */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+}
+
+.modal-content {
+    background-color: white;
+    margin: 10% auto;
+    padding: 20px;
+    border-radius: 5px;
+    width: 80%;
+    max-width: 500px;
+    position: relative;
+}
+
+.close-btn {
+    position: absolute;
+    right: 15px;
+    top: 10px;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.form-group input[type="text"],
+.form-group input[type="number"] {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.checkbox-group {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+}
+
+.checkbox-group label {
+    display: flex;
+    align-items: center;
+    font-weight: normal;
+}
+
+.checkbox-group input {
+    margin-right: 5px;
+}
+
+.submit-btn {
+    background-color: #2e7d32;
+    color: white;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.action-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    margin: 0 3px;
 }
